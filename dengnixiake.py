@@ -39,6 +39,7 @@ for pagenum in range(5):
     res = requests.get('https://c.y.qq.com/base/fcgi-bin/fcg_global_comment_h5.fcg?', headers=headers, params=params)
     data = res.json()
     for a in data['comment']['commentlist']:
-        print('{0}:{1}'.format(a['nick'], a['rootcommentcontent']))
-    lasthotcommentid = data['comment']['commentlist'][-1]['rootcommentid']
+         if 'rootcommentcontent' in a: 
+             print('{0}:{1}'.format(a['nick'], a['rootcommentcontent']))
+    lasthotcommentid = data['comment']['commentlist'][-1]['commentid']
     time.sleep(1)
